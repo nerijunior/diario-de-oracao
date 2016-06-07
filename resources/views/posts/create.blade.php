@@ -25,10 +25,18 @@
             <div class="col-md-2">
                 <div class="form-group">
                     <label>Data</label>
-                    <input type="date" class="form-control" name="date" autofocus/>
+                    <div class="input-group">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default">Ontem</button>
+                        </span>
+                        <input type="date" class="form-control" name="date" autofocus/>
+                        <span class="input-group-btn">
+                            <button class="btn btn-default">Hoje</button>
+                        </span>
+                    </div>
                 </div>
             </div>
-            <div class="col-md-6 col-md-offset-4">
+            <div class="col-md-6 col-md-offset-2">
                 <div class="form-group">
                     <label>Dia da semana</label>
                     <div class="btn-group" data-toggle="buttons">
@@ -62,17 +70,22 @@
 
         <div class="form-group">
             <label>O que você leu na bíblia hoje?</label>
-            <textarea name="questions['bible_readed']" class="form-control"></textarea>
+            <textarea name="questions[bible_readed]" class="form-control"></textarea>
         </div>
 
         <div class="form-group">
-            <label>O que Deus falou comigo?</label>
-            <textarea name="questions['god_speak']" class="form-control"></textarea>
+            <label>Onde você orou?</label>
+            <textarea name="questions[where_i_pray]" class="form-control"></textarea>
         </div>
 
         <div class="form-group">
-            <label>O que Deus falou comigo?</label>
-            <textarea name="questions['god_speak']" class="form-control"></textarea>
+            <label>O que Deus falou com você?</label>
+            <textarea name="questions[god_speak]" class="form-control"></textarea>
+        </div>
+
+        <div class="form-group">
+            <label>O que você falou com Deus?</label>
+            <textarea name="questions[i_speak]" class="form-control"></textarea>
         </div>
 
         <div class="row">

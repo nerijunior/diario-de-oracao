@@ -24,11 +24,10 @@ class CreatePostRequest extends Request
     public function rules()
     {
         return [
-            'date'            => 'required|date',
-            'week_day'        => 'required|int|min:1|max:7',
-            'questions'       => 'required',
-            'fasting'         => 'required|boolean',
-            'fasting_purpose' => 'text',
+            'date'      => 'required|date',
+            'week_day'  => 'required|int|min:1|max:7',
+            'questions' => 'required',
+            'fasting'   => 'required|boolean',
         ];
     }
 }
