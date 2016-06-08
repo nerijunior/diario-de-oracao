@@ -42,35 +42,6 @@
                 </div>
             </div>
 
-            <div class="col-md-6 col-md-offset-2">
-                <div class="form-group">
-                    <label>Dia da semana</label>
-                    <div class="btn-group" data-toggle="buttons">
-                        <label class="btn btn-primary">
-                            {!! Form::radio('week_day', 1) !!} Domingo
-                        </label>
-                        <label class="btn btn-primary">
-                            {!! Form::radio('week_day', 2) !!} Segunda
-                        </label>
-                        <label class="btn btn-primary">
-                            {!! Form::radio('week_day', 3) !!} Terça
-                        </label>
-                        <label class="btn btn-primary">
-                            {!! Form::radio('week_day', 4) !!} Quarta
-                        </label>
-                        <label class="btn btn-primary">
-                            {!! Form::radio('week_day', 5) !!} Quinta
-                        </label>
-                        <label class="btn btn-primary">
-                            {!! Form::radio('week_day', 6) !!} Sexta
-                        </label>
-                        <label class="btn btn-primary">
-                            {!! Form::radio('week_day', 7) !!} Sábado
-                        </label>
-                    </div>
-                </div>
-            </div>
-
         </div>
         <!-- /.row -->
 
