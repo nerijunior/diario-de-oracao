@@ -3,7 +3,11 @@
 @section('content')
 <div class="container">
     <div class="page-header">
+    @if(isset($post))
+        <h1>Atualizando dia</h1>
+    @else
         <h1>Novo dia</h1>
+    @endif
     </div>
 
     @if (count($errors) > 0)
@@ -16,12 +20,13 @@
     </div>
     @endif
 
+    @if (isset($post))
+        {!! Form::model($post, ['route' => ['posts.update', $post->id], 'method' => 'put']) !!}
+    @else
+        {!! Form::open(['route' => 'posts.save', 'method' => 'post']) !!}
+    @endif
 
-    <form action="{{ route('savePost') }}" method="post">
-
-        {{ csrf_field() }}
-
-        <div class="row">
+         <div class="row">
             <div class="col-md-2">
                 <div class="form-group">
                     <label>Data</label>
@@ -29,37 +34,38 @@
                         <span class="input-group-btn">
                             <button class="btn btn-default">Ontem</button>
                         </span>
-                        <input type="date" class="form-control" name="date" autofocus/>
+                        {!! Form::date('date', old('date'),['class' => 'form-control', 'autofocus']) !!}
                         <span class="input-group-btn">
                             <button class="btn btn-default">Hoje</button>
                         </span>
                     </div>
                 </div>
             </div>
+
             <div class="col-md-6 col-md-offset-2">
                 <div class="form-group">
                     <label>Dia da semana</label>
                     <div class="btn-group" data-toggle="buttons">
-                        <label class="btn btn-primary active">
-                            <input type="radio" name="week_day" value="1" checked> Domingo
+                        <label class="btn btn-primary">
+                            {!! Form::radio('week_day', 1) !!} Domingo
                         </label>
                         <label class="btn btn-primary">
-                            <input type="radio" name="week_day" value="2" checked> Segunda
+                            {!! Form::radio('week_day', 2) !!} Segunda
                         </label>
                         <label class="btn btn-primary">
-                            <input type="radio" name="week_day" value="3"> Terça
+                            {!! Form::radio('week_day', 3) !!} Terça
                         </label>
                         <label class="btn btn-primary">
-                            <input type="radio" name="week_day" value="4"> Quarta
+                            {!! Form::radio('week_day', 4) !!} Quarta
                         </label>
                         <label class="btn btn-primary">
-                            <input type="radio" name="week_day" value="5"> Quinta
+                            {!! Form::radio('week_day', 5) !!} Quinta
                         </label>
                         <label class="btn btn-primary">
-                            <input type="radio" name="week_day" value="6"> Sexta
+                            {!! Form::radio('week_day', 6) !!} Sexta
                         </label>
                         <label class="btn btn-primary">
-                            <input type="radio" name="week_day" value="7"> Sábado
+                            {!! Form::radio('week_day', 7) !!} Sábado
                         </label>
                     </div>
                 </div>
@@ -70,22 +76,22 @@
 
         <div class="form-group">
             <label>O que você leu na bíblia hoje?</label>
-            <textarea name="questions[bible_readed]" class="form-control"></textarea>
+            {!! Form::textarea('questions[bible_readed]', old('questions[bible_readed]'),['class' => 'form-control', 'autofocus']) !!}
         </div>
 
         <div class="form-group">
             <label>Onde você orou?</label>
-            <textarea name="questions[where_i_pray]" class="form-control"></textarea>
+            {!! Form::textarea('questions[where_i_pray]', old('questions[where_i_pray]'),['class' => 'form-control', 'autofocus']) !!}
         </div>
 
         <div class="form-group">
             <label>O que Deus falou com você?</label>
-            <textarea name="questions[god_speak]" class="form-control"></textarea>
+            {!! Form::textarea('questions[god_speak]', old('questions[god_speak]'),['class' => 'form-control', 'autofocus']) !!}
         </div>
 
         <div class="form-group">
             <label>O que você falou com Deus?</label>
-            <textarea name="questions[i_speak]" class="form-control"></textarea>
+            {!! Form::textarea('questions[i_speak]', old('questions[i_speak]'),['class' => 'form-control', 'autofocus']) !!}
         </div>
 
         <div class="row">
@@ -95,22 +101,22 @@
                     <br>
                     <div class="btn-group" data-toggle="buttons">
                         <label class="btn btn-default">
-                            <input type="radio" name="fasting" value="1"> Sim
+                            {!! Form::radio('fasting', 1) !!} Sim
                         </label>
-                        <label class="btn btn-default active">
-                            <input type="radio" name="fasting" value="0" checked> Não
+                        <label class="btn btn-default">
+                            {!! Form::radio('fasting', 0) !!} Não
                         </label>
                     </div>
                 </div>
             </div>
             <div class="col-md-5">
                 <label>Motivo do Jejum</label>
-                <textarea name="fasting_purpose" class="form-control"></textarea>
+                {!! Form::textarea('questions[fasting_purpose]', old('questions[fasting_purpose]'),['class' => 'form-control', 'autofocus']) !!}
             </div>
         </div>
         <div class="row">
             <button class="btn btn-success">Salvar</button>
         </div>
-    </form>
+    {!! Form::close() !!}
 </div>
 @endsection

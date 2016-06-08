@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Posts;
+use App\Post;
 use Auth;
 
 class DiariesController extends Controller
@@ -10,7 +10,7 @@ class DiariesController extends Controller
     public function myDiary()
     {
         $user  = Auth::user();
-        $posts = Posts::where('user_id', $user->_id)
+        $posts = Post::where('user_id', $user->_id)
             ->get();
 
         return view('my-diary', compact('posts'));

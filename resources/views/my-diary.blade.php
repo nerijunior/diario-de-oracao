@@ -6,7 +6,7 @@
         <div class="btn-toolbar pull-right">
             <div class="btn-group">
                 <!-- <button class="">Novo dia</button> -->
-                <a href="{{ route('newPost') }}" class="btn btn-primary">Novo dia</a>
+                <a href="{{ route('posts.new') }}" class="btn btn-primary">Novo dia</a>
             </div>
         </div>
         <h1>Meu Diário</h1>
@@ -14,7 +14,11 @@
 
     <ul class="posts">
     @foreach ($posts as $post)
-        <li>{{ $post->id }}</li>
+        <li>
+            <a href="{{ route('posts.edit', ['id' => $post->id]) }}">
+                {{ date('d/m/Y', strtotime($post->date)) }} - {{ $post->questions['bible_readed'] }}
+            </a>
+        </li>
     @endforeach
     </ul>
 </div>
