@@ -16,7 +16,7 @@
     <link href="{{ elixir('css/app.css') }}" rel="stylesheet">
 
     <script>
-    base_url = '{{ url('/') }}'
+        base_url = '{{ url('/') }}'
     </script>
 
     <style>
@@ -57,18 +57,18 @@
                 <ul class="nav navbar-nav navbar-right">
                     <!-- Authentication Links -->
                     @if (Auth::guest())
-                        <li><a href="{{ url('/login') }}">Entrar</a></li>
-                        <li><a href="{{ url('/register') }}">Cadastrar</a></li>
+                    <li><a href="{{ url('/login') }}">Entrar</a></li>
+                    <li><a href="{{ url('/register') }}">Cadastrar</a></li>
                     @else
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                {{ Auth::user()->name }} <span class="caret"></span>
-                            </a>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                            {{ Auth::user()->name }} <span class="caret"></span>
+                        </a>
 
-                            <ul class="dropdown-menu" role="menu">
-                                <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Logout</a></li>
-                            </ul>
-                        </li>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Logout</a></li>
+                        </ul>
+                    </li>
                     @endif
                 </ul>
             </div>
@@ -82,21 +82,39 @@
     <script src="{{ url('js/bootstrap.min.js') }}" crossorigin="anonymous"></script>
     <script src="{{ url('js/moment-with-locales.min.js') }}" crossorigin="anonymous"></script>
     <script type="text/javascript">
-    moment.locale('pt-br')
-    $(function(){
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': '{{ csrf_token() }}'
-            }
-        });
+        moment.locale('pt-br')
+        $(function(){
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                }
+            });
 
-        $('.btn-group').each(function(){
-            $(this).find('input[type=radio]:checked').parent('.btn').addClass('active');
+            $('.btn-group').each(function(){
+                $(this).find('input[type=radio]:checked').parent('.btn').addClass('active');
+            });
         });
-    });
     </script>
     @yield('scripts')
 
     {{-- <script src="{{ elixir('js/app.js') }}"></script> --}}
+
+    <script>
+      window.fbAsyncInit = function() {
+        FB.init({
+          appId      : '1201521616526642',
+          xfbml      : true,
+          version    : 'v2.6'
+      });
+    };
+
+    (function(d, s, id){
+       var js, fjs = d.getElementsByTagName(s)[0];
+       if (d.getElementById(id)) {return;}
+       js = d.createElement(s); js.id = id;
+       js.src = "//connect.facebook.net/en_US/sdk.js";
+       fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
 </body>
 </html>
