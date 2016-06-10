@@ -76,13 +76,17 @@
     <!-- JavaScripts -->
     <script src="{{ url('js/jquery.js') }}" crossorigin="anonymous"></script>
     <script src="{{ url('js/bootstrap.min.js') }}" crossorigin="anonymous"></script>
+    <script src="{{ url('js/moment-with-locales.min.js') }}" crossorigin="anonymous"></script>
     <script type="text/javascript">
+    moment.locale('pt-br')
     $(function(){
         $('.btn-group').each(function(){
             $(this).find('input[type=radio]:checked').parent('.btn').addClass('active');
         });
     });
     </script>
+    @yield('scripts')
+
     {{-- <script src="{{ elixir('js/app.js') }}"></script> --}}
 </body>
 </html>
