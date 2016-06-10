@@ -4,10 +4,11 @@
 <div class="container">
     <div class="page-header">
         <div class="btn-toolbar pull-right">
-            <div class="btn-group">
-                <!-- <button class="">Novo dia</button> -->
-                <a href="{{ route('posts.new') }}" class="btn btn-primary">Novo dia</a>
-            </div>
+            <a href="{{ route('diaries.share') }}" class="btn btn-warning">
+                <span class="glyphicon glyphicon-share"></span>
+                Compartilhar Diário
+            </a>
+            <a href="{{ route('posts.new') }}" class="btn btn-primary">Novo dia</a>
         </div>
         <h1>Meu Diário</h1>
     </div>

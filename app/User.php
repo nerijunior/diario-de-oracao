@@ -23,7 +23,7 @@ class User extends Moloquent implements
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'config',
     ];
 
     /**

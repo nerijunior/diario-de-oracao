@@ -14,6 +14,11 @@ Route::auth();
 Route::group(['middleware' => ['auth']], function () {
     Route::get('/meu-diario', ['as' => 'my-diary', 'uses' => 'DiariesController@myDiary']);
 
+    Route::group(['prefix' => '/diario', 'as' => 'diaries.'], function () {
+        Route::get('/compartilhar', ['as' => 'share', 'uses' => 'DiariesController@share']);
+        Route::post('/compartilhar', ['as' => 'share.save', 'uses' => 'DiariesController@saveShare']);
+    });
+
     Route::group(['prefix' => '/dia', 'as' => 'posts.'], function () {
         Route::get('/novo', ['as' => 'new', 'uses' => 'PostsControllers@create']);
         Route::post('/salvar', ['as' => 'save', 'uses' => 'PostsControllers@save']);
@@ -22,3 +27,6 @@ Route::group(['middleware' => ['auth']], function () {
     });
 
 });
+
+// Ver diário compartilhado
+Route::get('/diario/{id}', ['as' => 'diaries.see_shared', 'uses' => 'DiariesController@seeShared']);

@@ -13,7 +13,11 @@
 
     <!-- Styles -->
     <link rel="stylesheet" href="{{ url('css/bootstrap.css') }}">
-    {{-- <link href="{{ elixir('css/app.css') }}" rel="stylesheet"> --}}
+    <link href="{{ elixir('css/app.css') }}" rel="stylesheet">
+
+    <script>
+    base_url = '{{ url('/') }}'
+    </script>
 
     <style>
         body {
@@ -80,6 +84,12 @@
     <script type="text/javascript">
     moment.locale('pt-br')
     $(function(){
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': '{{ csrf_token() }}'
+            }
+        });
+
         $('.btn-group').each(function(){
             $(this).find('input[type=radio]:checked').parent('.btn').addClass('active');
         });
