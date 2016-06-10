@@ -1,12 +1,6 @@
 <?php
 
-Route::get('/', function () {
-    if (Auth::check()) {
-        return redirect()
-            ->route('my-diary');
-    }
-    return view('welcome');
-});
+Route::get('/', ['as' => 'home', 'uses' => 'HomeController@index']);
 
 Route::auth();
 
