@@ -5,7 +5,7 @@ return [
     'debug'           => env('APP_DEBUG', false),
     'url'             => env('APP_URL', 'http://localhost'),
     'timezone'        => 'America/Sao_Paulo',
-    'locale'          => 'en',
+    'locale'          => 'pt_BR',
     'fallback_locale' => 'en',
     'key'             => env('APP_KEY'),
     'cipher'          => 'AES-256-CBC',
@@ -63,6 +63,7 @@ return [
 
         Collective\Html\HtmlServiceProvider::class,
 
+        App\Providers\CarbonLanguageProvider::class,
     ],
 
     'aliases'         => [

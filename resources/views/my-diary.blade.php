@@ -13,14 +13,6 @@
         <h1>Meu Diário</h1>
     </div>
 
-    <ul class="posts">
-    @foreach ($posts as $post)
-        <li>
-            <a href="{{ route('posts.edit', ['id' => $post->id]) }}">
-                {{ date('d/m/Y', strtotime($post->date)) }} - {{ $post->questions['bible_readed'] }}
-            </a>
-        </li>
-    @endforeach
-    </ul>
+    @include('diaries.list')
 </div>
 @endsection

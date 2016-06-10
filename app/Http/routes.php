@@ -22,11 +22,14 @@ Route::group(['middleware' => ['auth']], function () {
     Route::group(['prefix' => '/dia', 'as' => 'posts.'], function () {
         Route::get('/novo', ['as' => 'new', 'uses' => 'PostsControllers@create']);
         Route::post('/salvar', ['as' => 'save', 'uses' => 'PostsControllers@save']);
-        Route::get('/{id}', ['as' => 'edit', 'uses' => 'PostsControllers@edit']);
+        Route::get('/{id}/edit', ['as' => 'edit', 'uses' => 'PostsControllers@edit']);
         Route::put('/{id}', ['as' => 'update', 'uses' => 'PostsControllers@update']);
     });
 
 });
 
 // Ver diário compartilhado
-Route::get('/diario/{id}', ['as' => 'diaries.see_shared', 'uses' => 'DiariesController@seeShared']);
+Route::group(['prefix' => '/compartilhado', 'as' => 'shared.'], function () {
+    Route::get('/diario/{id}', ['as' => 'diaries.see', 'uses' => 'DiariesController@sharedSee']);
+    Route::get('/dia/{id}', ['as' => 'posts.see', 'uses' => 'PostsControllers@sharedSee']);
+});

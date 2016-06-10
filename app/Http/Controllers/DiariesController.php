@@ -3,17 +3,22 @@
 namespace App\Http\Controllers;
 
 use App\Post;
+use App\User;
 use Auth;
 use Illuminate\Http\Request;
 
 class DiariesController extends Controller
 {
+
+    public function getUserPosts($user)
+    {
+        return Post::where('user_id', $user->_id)->get();
+    }
+
     public function myDiary()
     {
         $user  = Auth::user();
-        $posts = Post::where('user_id', $user->_id)
-            ->get();
-
+        $posts = $this->getUserPosts($user);
         return view('my-diary', compact('posts'));
     }
 
@@ -22,7 +27,12 @@ class DiariesController extends Controller
         $user   = Auth::user();
         $config = (isset($user->config)) ? $user->config : [];
 
-        return view('diaries.share', compact('config'));
+        $url = '';
+        if (isset($config['share_link']) && $config['share_link']) {
+            $url = $this->genShareLink($user);
+        }
+
+        return view('diaries.share', compact('config', 'url'));
     }
 
     public function saveShare(Request $request)
@@ -37,12 +47,27 @@ class DiariesController extends Controller
             ],
         ]);
 
-        dd($user->toArray());
-
+        return json_encode(array_merge($user->config, [
+            'link' => $this->genShareLink($user),
+        ]));
     }
 
-    public function seeShared()
+    public function sharedSee($id)
     {
-        dd('tes');
+        $user = User::select(['name', 'config'])
+            ->find($id);
+
+        if (!isset($user->config['share_link']) || !$user->config['share_link']) {
+            abort(404);
+        }
+
+        $posts = $this->getUserPosts($user);
+
+        return view('shared.diaries.list', compact('user', 'posts'));
+    }
+
+    private function genShareLink($user)
+    {
+        return route('shared.diaries.see', ['id' => $user->id]);
     }
 }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\CreatePostRequest;
 use App\Http\Requests\UpdatePostRequest;
 use App\Post;
+use App\User;
 use Auth;
 
 class PostsControllers extends Controller
@@ -49,5 +50,17 @@ class PostsControllers extends Controller
         $post->update($request->except(['_token', '_method']));
 
         return redirect('/');
+    }
+
+    public function sharedSee($id)
+    {
+        $post = Post::find($id);
+        $user = User::select(['name', 'config'])->find($post->user_id);
+
+        if (!isset($user->config['share_link']) || !$user->config['share_link']) {
+            abort(404);
+        }
+
+        return view('shared.posts.see', compact('user', 'post'));
     }
 }

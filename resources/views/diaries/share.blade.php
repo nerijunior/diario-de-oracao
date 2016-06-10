@@ -17,7 +17,7 @@
             <p class="text-info"><span class="glyphicon glyphicon-lock"></span> Isso <strong>não</strong> permite que outros usuários editem seu diário!</p>
 
         </div>
-        <input type="text" class="form-control link" style="display: none;" readonly="">
+        <input type="text" class="form-control link" style="display: none;" readonly="" value="{{ $url }}">
     </form>
 </div>
 @endsection
@@ -42,10 +42,11 @@
                 beforeSend: function(){
                     $spinner.show()
                 },
-                success: function(data){
-                    console.log(data)
-                    if ($that.is(':checked'))
+                success: function(response){
+                    if (response.share_link){
+                        $input.val(response.link)
                         return showHiddenField()
+                    }
 
                     return hideHiddenField()
                 },
