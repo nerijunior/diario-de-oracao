@@ -99,11 +99,10 @@
 
     {{-- <script src="{{ elixir('js/app.js') }}"></script> --}}
 
-    @if(env('APP_ENV') == 'production')
     <script>
     window.fbAsyncInit = function() {
         FB.init({
-            appId      : '1201521616526642',
+            appId      : '{{ env('FACEBOOK_APP_ID') }}',
             xfbml      : true,
             version    : 'v2.6'
         });
@@ -124,7 +123,7 @@
         m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
         })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
-        ga('create', 'UA-79144277-1', 'auto');
+        ga('create', '{{ env('GOOGLE_ANALYTICS_ID') }}', 'auto');
         ga('send', 'pageview');
     </script>
     @endif
