@@ -1,4 +1,8 @@
 .hidden {
   display: none; }
 
+#welcome .share-button {
+  float: left;
+  margin-right: 10px; }
+
 /*# sourceMappingURL=app.css.map */

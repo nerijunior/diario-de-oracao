@@ -2,3 +2,10 @@
 .hidden{
     display: none;
 }
+
+#welcome{
+    .share-button{
+        float: left;
+        margin-right: 10px;
+    }
+}
