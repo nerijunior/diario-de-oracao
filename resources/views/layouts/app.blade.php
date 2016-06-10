@@ -15,6 +15,11 @@
     <link rel="stylesheet" href="{{ url('css/bootstrap.css') }}">
     <link href="{{ elixir('css/app.css') }}" rel="stylesheet">
 
+    <meta property="og:url"                content="{{ Request::url() }}" />
+    <meta property="og:title"              content="Diário de oração" />
+    <meta property="og:description"        content="Tenha suas experiências com Deus guardadas em um só lugar e reviva sua fé sempre que precisar. Faça seu Diário de Oração!" />
+    <meta property="og:image"              content="{{ url('images/512x512.png') }}" />
+
     <script>
         base_url = '{{ url('/') }}'
     </script>
@@ -43,8 +48,8 @@
                 </button>
 
                 <!-- Branding Image -->
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    Diário de Oração
+                <a class="navbar-brand" style="padding: 5px;" href="{{ url('/') }}">
+                    <img src="{{ url('images/40x40.png') }}" alt="">
                 </a>
             </div>
 
