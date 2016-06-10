@@ -99,22 +99,25 @@
 
     {{-- <script src="{{ elixir('js/app.js') }}"></script> --}}
 
+    @if(env('APP_ENV') == 'production')
     <script>
-      window.fbAsyncInit = function() {
+    window.fbAsyncInit = function() {
         FB.init({
-          appId      : '1201521616526642',
-          xfbml      : true,
-          version    : 'v2.6'
-      });
+            appId      : '1201521616526642',
+            xfbml      : true,
+            version    : 'v2.6'
+        });
     };
 
     (function(d, s, id){
-       var js, fjs = d.getElementsByTagName(s)[0];
-       if (d.getElementById(id)) {return;}
-       js = d.createElement(s); js.id = id;
-       js.src = "//connect.facebook.net/en_US/sdk.js";
-       fjs.parentNode.insertBefore(js, fjs);
-   }(document, 'script', 'facebook-jssdk'));
-</script>
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) {return;}
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_US/sdk.js";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+    </script>
+    @endif
+
 </body>
 </html>
