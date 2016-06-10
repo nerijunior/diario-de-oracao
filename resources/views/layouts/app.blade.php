@@ -99,6 +99,7 @@
 
     {{-- <script src="{{ elixir('js/app.js') }}"></script> --}}
 
+    <!-- Tracking codes -->
     <script>
     window.fbAsyncInit = function() {
         FB.init({
