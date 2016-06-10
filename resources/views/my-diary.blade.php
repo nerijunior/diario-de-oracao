@@ -2,8 +2,17 @@
 
 @section('content')
 <div class="container">
+
+    <div class="btn-toolbar hidden-lg">
+        <a href="{{ route('diaries.share') }}" class="btn btn-warning">
+            <span class="glyphicon glyphicon-share"></span>
+            Compartilhar Diário
+        </a>
+        <a href="{{ route('posts.new') }}" class="btn btn-primary">Novo dia</a>
+    </div>
+
     <div class="page-header">
-        <div class="btn-toolbar pull-right">
+        <div class="btn-toolbar pull-right hidden-xs">
             <a href="{{ route('diaries.share') }}" class="btn btn-warning">
                 <span class="glyphicon glyphicon-share"></span>
                 Compartilhar Diário
@@ -12,6 +21,8 @@
         </div>
         <h1>Meu Diário</h1>
     </div>
+
+
 
     @include('diaries.list')
 </div>

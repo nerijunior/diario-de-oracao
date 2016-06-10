@@ -34,7 +34,7 @@
                         <span class="input-group-btn">
                             <button class="btn btn-default ontem">Ontem</button>
                         </span>
-                        {!! Form::date('date', old('date'),['class' => 'form-control', 'autofocus']) !!}
+                        {!! Form::date('date', date('Y-m-d', strtotime(old('date'))),['class' => 'form-control', 'autofocus']) !!}
                         <span class="input-group-btn">
                             <button class="btn btn-default hoje">Hoje</button>
                         </span>
@@ -47,22 +47,22 @@
 
         <div class="form-group">
             <label>O que você leu na bíblia hoje?</label>
-            {!! Form::textarea('questions[bible_readed]', old('questions[bible_readed]'),['class' => 'form-control']) !!}
+            {!! Form::textarea('questions[bible_readed]', old('questions[bible_readed]'),['class' => 'form-control', 'rows' => 4]) !!}
         </div>
 
         <div class="form-group">
             <label>Onde você orou?</label>
-            {!! Form::textarea('questions[where_i_pray]', old('questions[where_i_pray]'),['class' => 'form-control']) !!}
+            {!! Form::textarea('questions[where_i_pray]', old('questions[where_i_pray]'),['class' => 'form-control', 'rows' => 4]) !!}
         </div>
 
         <div class="form-group">
             <label>O que Deus falou com você?</label>
-            {!! Form::textarea('questions[god_speak]', old('questions[god_speak]'),['class' => 'form-control']) !!}
+            {!! Form::textarea('questions[god_speak]', old('questions[god_speak]'),['class' => 'form-control', 'rows' => 4]) !!}
         </div>
 
         <div class="form-group">
             <label>O que você falou com Deus?</label>
-            {!! Form::textarea('questions[i_speak]', old('questions[i_speak]'),['class' => 'form-control']) !!}
+            {!! Form::textarea('questions[i_speak]', old('questions[i_speak]'),['class' => 'form-control', 'rows' => 4]) !!}
         </div>
 
         <div class="row">
@@ -82,11 +82,14 @@
             </div>
             <div class="col-md-5">
                 <label>Motivo do Jejum</label>
-                {!! Form::textarea('questions[fasting_purpose]', old('questions[fasting_purpose]'),['class' => 'form-control']) !!}
+                {!! Form::textarea('fasting_purpose', old('fasting_purpose'),['class' => 'form-control', 'rows' => 2]) !!}
             </div>
         </div>
+
         <div class="row">
-            <button class="btn btn-success">Salvar</button>
+            <div class="col-md-12">
+                <button class="btn btn-success">Salvar</button>
+            </div>
         </div>
     {!! Form::close() !!}
 </div>
