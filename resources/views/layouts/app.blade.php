@@ -126,7 +126,6 @@
         ga('create', '{{ env('GOOGLE_ANALYTICS_ID') }}', 'auto');
         ga('send', 'pageview');
     </script>
-    @endif
 
 </body>
 </html>
