@@ -12,7 +12,9 @@ class DiariesController extends Controller
 
     public function getUserPosts($user)
     {
-        return Post::where('user_id', $user->_id)->get();
+        return Post::where('user_id', $user->_id)
+            ->orderBy('date', 'desc')
+            ->get();
     }
 
     public function myDiary()

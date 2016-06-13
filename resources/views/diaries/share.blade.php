@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <div class="page-header">
-        <h2>Compartilhar seu diário</h2>
+        <h2>Preferências</h2>
     </div>
 
     <form>
