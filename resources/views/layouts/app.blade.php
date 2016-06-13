@@ -18,7 +18,7 @@
     <meta property="og:url"                content="{{ Request::url() }}" />
     <meta property="og:title"              content="Diário de oração" />
     <meta property="og:description"        content="Tenha suas experiências com Deus guardadas em um só lugar e reviva sua fé sempre que precisar. Faça seu Diário de Oração!" />
-    <meta property="og:image"              content="{{ url('images/512x512.png') }}" />
+    <meta property="og:image"              content="{{ url('images/256x256.png') }}" />
 
     <script>
         base_url = '{{ url('/') }}'
