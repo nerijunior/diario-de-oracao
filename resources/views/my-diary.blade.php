@@ -22,7 +22,16 @@
         <h1>Meu Diário</h1>
     </div>
 
-
+    <div class="row">
+        <div class="col-md-2">
+            <div class="panel panel-default">
+                <div class="panel-heading">Total de diários</div>
+                <div class="panel-body text-center" style="font-size: 25px;">
+                    {{ count($posts) }}
+                </div>
+            </div>
+        </div>
+    </div>
 
     @include('diaries.list')
 </div>
